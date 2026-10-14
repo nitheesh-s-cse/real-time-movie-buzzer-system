@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: real-time-movie-buzzer-system
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run db:push && npm run build
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        sync: false
+      - key: ADMIN_SETUP_KEY
+        sync: false
+      - key: NODE_ENV
+        value: production
